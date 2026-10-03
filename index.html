@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es" data-modo="noche">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Aguaje · Habitaciones en Puerto Maldonado | Reserva directo</title>
+  <meta name="description" content="Hotel en Puerto Maldonado para dormir bien: habitaciones con aire acondicionado, colchones ortopédicos, carta de almohadas, desayuno buffet y recepción 24 h. Reserva directo por WhatsApp.">
+  <meta name="theme-color" content="#0D1020">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hotel Aguaje · Aquí se duerme bien">
+  <meta property="og:description" content="Elige tu habitación y tu almohada. Reserva directo por WhatsApp y paga menos que en las apps.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1630660664869-c9d3cc676880?auto=format&fit=crop&w=1200&h=630&q=70">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Elige día o noche antes de pintar la página (evita un parpadeo) */
+    (function () {
+      var modo;
+      try { modo = localStorage.getItem("modo-hotel"); } catch (e) {}
+      if (modo !== "dia" && modo !== "noche") {
+        var h = Number(new Intl.DateTimeFormat("en-US", { timeZone: "America/Lima", hour: "numeric", hourCycle: "h23" }).format(new Date()));
+        modo = h >= 6 && h < 18 ? "dia" : "noche";
+      }
+      document.documentElement.dataset.modo = modo;
+    })();
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#habitaciones">Ir a las habitaciones</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a class="logo" href="#inicio" aria-label="Inicio">
+        <img src="images/logo.svg" width="40" height="40" alt="">
+        <span class="logo__nombre" data-nombre></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#dia"><span>01</span>24 horas</a>
+        <a href="#habitaciones"><span>02</span>Habitaciones</a>
+        <a href="#almohadas"><span>03</span>Almohadas</a>
+        <a href="#tarifas"><span>04</span>Tarifas</a>
+        <a href="#visitas"><span>05</span>Opiniones</a>
+        <a href="#recepcion"><span>06</span>Recepción</a>
+      </nav>
+      <div class="header__acciones">
+        <span class="reloj" aria-hidden="true"><span class="reloj__punto"></span><span id="reloj"></span></span>
+        <button class="icono-btn" id="modo-btn" type="button" aria-label="Cambiar a modo día"><i class="ph ph-sun" aria-hidden="true"></i></button>
+        <button class="icono-btn icono-btn--llave" id="abrir-reserva" type="button" aria-label="Ver mi reserva">
+          <i class="ph ph-key" aria-hidden="true"></i>
+          <span class="contador" id="contador" hidden>0</span>
+        </button>
+        <a class="btn btn--wa btn--sm header__wa" data-wa href="#"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Reservar</span></a>
+        <button class="icono-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><i class="ph ph-list" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada: cambia según la hora -->
+    <section class="hero" id="inicio">
+      <div class="hero__foto"><img id="hero-img" src="" alt="" fetchpriority="high"></div>
+      <div class="hero__contenido">
+        <p class="hero__linea mono"><span id="hero-saludo"></span> · <span data-ciudad></span> · <span id="hero-hora"></span></p>
+        <h1 id="hero-titulo"></h1>
+        <p class="hero__texto" id="hero-texto"></p>
+        <div class="hero__sellos" id="hero-sellos"></div>
+      </div>
+
+      <form class="llave-form" id="buscador" aria-label="Buscar habitación">
+        <div class="llave-form__cabeza mono">
+          <span><i class="ph ph-key" aria-hidden="true"></i> Tarjeta de reserva</span>
+          <span data-nombre-plano></span>
+        </div>
+        <div class="llave-form__campos">
+          <label><span class="mono">Llegada</span><input type="date" id="f-llegada" required></label>
+          <label><span class="mono">Salida</span><input type="date" id="f-salida" required></label>
+          <label><span class="mono">Huéspedes</span><select id="f-huespedes"></select></label>
+        </div>
+        <p class="llave-form__resumen mono" id="buscador-resumen" aria-live="polite"></p>
+        <button class="btn btn--acento btn--full" type="submit">Ver habitaciones disponibles <i class="ph ph-arrow-down" aria-hidden="true"></i></button>
+        <span class="llave-form__banda" aria-hidden="true"></span>
+      </form>
+    </section>
+
+    <!-- 01 · 24 horas en el hotel -->
+    <section class="seccion dia" id="dia">
+      <header class="cabecera">
+        <p class="cabecera__num mono">01 — 24 horas en el hotel</p>
+        <h2>Así es un día <em>con nosotros</em>.</h2>
+        <p class="cabecera__texto">De la entrada a la salida, todo está pensado para una sola cosa: que descanses.</p>
+      </header>
+      <div class="dia__grid">
+        <div class="cielo" id="cielo" aria-hidden="true">
+          <div class="cielo__fotos" id="cielo-fotos"></div>
+          <div class="cielo__arco"><span class="cielo__astro" id="cielo-astro"></span></div>
+          <p class="cielo__hora mono" id="cielo-hora">13:00</p>
+        </div>
+        <ol class="momentos" id="momentos"></ol>
+      </div>
+      <div class="incluido">
+        <p class="incluido__titulo mono">Siempre incluido en tu tarifa</p>
+        <ul id="incluido"></ul>
+      </div>
+    </section>
+
+    <!-- 02 · El pasillo -->
+    <section class="seccion" id="habitaciones">
+      <header class="cabecera">
+        <p class="cabecera__num mono">02 — El pasillo</p>
+        <h2>Toca una puerta y <em>entra</em>.</h2>
+        <p class="cabecera__texto" id="hab-resumen"></p>
+      </header>
+
+      <div class="brujula" id="brujula">
+        <p class="brujula__titulo"><i class="ph ph-compass" aria-hidden="true"></i> ¿No sabes cuál elegir? Responde 3 cosas:</p>
+        <div class="brujula__preguntas">
+          <fieldset><legend class="mono">Viajo</legend>
+            <label><input type="radio" name="q-quien" value="solo"><span>Solo</span></label>
+            <label><input type="radio" name="q-quien" value="pareja"><span>En pareja</span></label>
+            <label><input type="radio" name="q-quien" value="grupo"><span>Familia o grupo</span></label>
+          </fieldset>
+          <fieldset><legend class="mono">Vengo por</legend>
+            <label><input type="radio" name="q-motivo" value="trabajo"><span>Trabajo</span></label>
+            <label><input type="radio" name="q-motivo" value="descanso"><span>Descanso</span></label>
+          </fieldset>
+          <fieldset><legend class="mono">Prefiero</legend>
+            <label><input type="radio" name="q-precio" value="ahorro"><span>Ahorrar</span></label>
+            <label><input type="radio" name="q-precio" value="gusto"><span>Darme un gusto</span></label>
+          </fieldset>
+        </div>
+        <p class="brujula__resultado" id="brujula-resultado" aria-live="polite"></p>
+      </div>
+
+      <div class="pasillo" id="pasillo" role="tablist" aria-label="Habitaciones"></div>
+      <article class="cuarto" id="cuarto" role="tabpanel" aria-live="polite"></article>
+    </section>
+
+    <!-- 03 · Carta de almohadas -->
+    <section class="seccion almohadas" id="almohadas">
+      <div class="almohadas__foto" data-revelar>
+        <img src="https://images.unsplash.com/photo-1638127815875-d8c930a8d467?auto=format&fit=crop&w=900&h=1100&q=70" alt="Almohadas blancas sobre una cama" loading="lazy" data-fallback="images/habitaciones/habitacion.svg">
+      </div>
+      <div class="almohadas__texto">
+        <header class="cabecera cabecera--izq">
+          <p class="cabecera__num mono">03 — Carta de almohadas</p>
+          <h2>Dormir bien empieza por <em>la almohada</em>.</h2>
+          <p class="cabecera__texto">Elige la tuya sin costo. Te la dejamos en la cama con un kit de descanso.</p>
+        </header>
+        <div class="carta" id="carta" role="radiogroup" aria-label="Elige tu almohada"></div>
+        <p class="kit mono" id="kit"></p>
+      </div>
+    </section>
+
+    <!-- 04 · Tarifas -->
+    <section class="seccion tarifas" id="tarifas">
+      <header class="cabecera">
+        <p class="cabecera__num mono">04 — Tarifas</p>
+        <h2>Mientras más te quedas, <em>menos pagas</em>.</h2>
+        <p class="cabecera__texto">Mueve la barra y compara lo que pagarías en una app con lo que pagas reservando directo.</p>
+      </header>
+      <div class="calculadora">
+        <div class="calculadora__control">
+          <label class="calculadora__hab"><span class="mono">Habitación</span><select id="calc-hab"></select></label>
+          <label class="calculadora__noches" for="calc-noches">
+            <span class="mono">Noches</span>
+            <strong id="calc-n">3</strong>
+          </label>
+          <input type="range" id="calc-noches" min="1" max="30" value="3" aria-describedby="calc-tramos">
+          <div class="tramos mono" id="calc-tramos"></div>
+          <p class="calculadora__nota" id="calc-nota"></p>
+          <div class="convenio">
+            <i class="ph ph-buildings" aria-hidden="true"></i>
+            <p><strong>Convenio para empresas.</strong> <span id="convenio-texto"></span></p>
+            <a class="enlace" data-wa="Hola, quiero información sobre el convenio para empresas." href="#">Pedir convenio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="recibos" id="recibos"></div>
+      </div>
+    </section>
+
+    <!-- 05 · Libro de visitas -->
+    <section class="seccion visitas" id="visitas">
+      <header class="cabecera">
+        <p class="cabecera__num mono">05 — Libro de visitas</p>
+        <h2>Lo que escribieron <em>al irse</em>.</h2>
+      </header>
+      <div class="sellos" id="sellos"></div>
+      <div class="libro" id="libro"></div>
+    </section>
+
+    <!-- 06 · Reglas -->
+    <section class="seccion reglas" id="reglas">
+      <header class="cabecera cabecera--izq">
+        <p class="cabecera__num mono">Reglas de la casa</p>
+        <h2>Claras desde <em>antes de llegar</em>.</h2>
+      </header>
+      <ol class="reglas__lista" id="reglas-lista"></ol>
+      <div class="faq" id="faq"></div>
+    </section>
+
+    <!-- 07 · Recepción -->
+    <section class="seccion recepcion" id="recepcion">
+      <div class="recepcion__timbre">
+        <p class="cabecera__num mono">06 — Recepción</p>
+        <h2>Toca el timbre. <em>Siempre</em> hay alguien.</h2>
+        <button class="timbre" id="timbre" type="button" aria-label="Tocar el timbre y escribir a recepción por WhatsApp">
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect class="timbre__boton" x="54" y="6" width="12" height="10" rx="3"/>
+            <path class="timbre__campana" d="M14 72a46 46 0 0 1 92 0Z"/>
+            <rect class="timbre__base" x="4" y="72" width="112" height="12" rx="4"/>
+          </svg>
+          <span class="mono">Escribir a recepción</span>
+        </button>
+        <p class="recepcion__estado"><span class="reloj__punto"></span> Atendiendo ahora · 24 horas, todos los días</p>
+      </div>
+      <div class="recepcion__datos">
+        <dl class="ficha">
+          <div><dt class="mono">Dirección</dt><dd data-direccion></dd></div>
+          <div><dt class="mono">Entrada · salida</dt><dd><span data-checkin></span> · <span data-checkout></span></dd></div>
+          <div><dt class="mono">Teléfono</dt><dd><a data-tel href="#"></a></dd></div>
+          <div><dt class="mono">Correo</dt><dd><a data-email href="#"></a></dd></div>
+          <div><dt class="mono">Pagos</dt><dd data-pagos></dd></div>
+        </dl>
+        <a class="enlace" id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar en Google Maps <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        <div class="mapa"><iframe id="mapa" title="Ubicación del hotel en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__grande" aria-hidden="true">Buenas noches.</p>
+    <div class="footer__fila">
+      <a class="logo" href="#inicio"><img src="images/logo.svg" width="36" height="36" alt=""><span class="logo__nombre" data-nombre></span></a>
+      <div class="redes" id="redes"></div>
+      <p class="mono footer__legal">© <span id="anio"></span> <span data-nombre-plano></span> · Calificaciones, reseñas y precios de ejemplo.</p>
+    </div>
+  </footer>
+
+  <!-- Flotantes -->
+  <a class="wa-flotante" id="wa-flotante" data-wa href="#" aria-label="Escribir por WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i></a>
+
+  <button class="llavero" id="llavero" type="button" hidden>
+    <span class="llavero__aro" aria-hidden="true"><i class="ph-fill ph-key"></i></span>
+    <span class="llavero__info">
+      <strong id="llavero-titulo"></strong>
+      <span class="mono" id="llavero-detalle"></span>
+    </span>
+    <span class="llavero__ir">Revisar <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Check-in (panel de reserva) -->
+  <dialog class="checkin" id="drawer" aria-labelledby="drawer-titulo">
+    <div class="checkin__panel">
+      <div class="checkin__cabeza">
+        <h2 id="drawer-titulo">Tu check-in</h2>
+        <button class="icono-btn" type="button" data-cerrar aria-label="Cerrar"><i class="ph ph-x" aria-hidden="true"></i></button>
+      </div>
+      <form class="checkin__cuerpo" id="form-reserva" novalidate>
+        <div class="tarjeta" id="tarjeta" aria-hidden="true"></div>
+
+        <div class="checkin__fechas">
+          <label><span class="mono">Llegada</span><input type="date" id="d-llegada" required></label>
+          <label><span class="mono">Salida</span><input type="date" id="d-salida" required></label>
+          <label><span class="mono">Huéspedes</span><select id="d-huespedes"></select></label>
+        </div>
+
+        <h3 class="checkin__sub mono">Habitaciones</h3>
+        <div id="d-items"></div>
+        <p class="aviso" id="d-capacidad" hidden></p>
+
+        <h3 class="checkin__sub mono">Almohada</h3>
+        <div class="mini-carta" id="d-almohada" role="radiogroup" aria-label="Almohada"></div>
+
+        <h3 class="checkin__sub mono">Extras <small>opcionales</small></h3>
+        <div class="extras" id="d-extras"></div>
+
+        <div class="resumen" id="d-resumen"></div>
+
+        <h3 class="checkin__sub mono">Tus datos</h3>
+        <div class="campos">
+          <label class="campo campo--full">
+            <span>Nombre completo *</span>
+            <input type="text" id="c-nombre" autocomplete="name" required>
+            <small class="campo__error">Escribe tu nombre para la reserva.</small>
+          </label>
+          <label class="campo">
+            <span>DNI o pasaporte</span>
+            <input type="text" id="c-doc" autocomplete="off">
+          </label>
+          <label class="campo">
+            <span>Hora aprox. de llegada</span>
+            <select id="c-hora">
+              <option value="">No lo sé aún</option>
+              <option>Madrugada (12–6 a. m.)</option>
+              <option>Mañana (6–12 a. m.)</option>
+              <option>Tarde (12–6 p. m.)</option>
+              <option>Noche (6–12 p. m.)</option>
+            </select>
+          </label>
+          <label class="campo">
+            <span>Motivo del viaje</span>
+            <select id="c-motivo">
+              <option value="">Prefiero no decir</option>
+              <option>Trabajo</option>
+              <option>Descanso</option>
+              <option>Familia</option>
+              <option>De paso</option>
+              <option>Trámite o salud</option>
+            </select>
+          </label>
+          <label class="campo">
+            <span>Pago del adelanto</span>
+            <select id="c-pago"></select>
+          </label>
+          <label class="campo campo--full campo--check" id="c-factura-wrap">
+            <input type="checkbox" id="c-factura">
+            <span>Necesito factura</span>
+          </label>
+          <label class="campo campo--full" id="c-ruc-wrap" hidden>
+            <span>RUC y razón social</span>
+            <input type="text" id="c-ruc" placeholder="20123456789 · Empresa S.A.C.">
+          </label>
+          <label class="campo campo--full">
+            <span>Notas</span>
+            <textarea id="c-notas" rows="2" placeholder="Piso alto, alergias, hora de vuelo, etc."></textarea>
+          </label>
+        </div>
+      </form>
+      <div class="checkin__pie">
+        <div class="checkin__total"><span class="mono">Total estimado</span><strong id="d-total">S/ 0.00</strong></div>
+        <button class="btn btn--wa btn--full" type="submit" form="form-reserva">
+          <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i> Enviar solicitud por WhatsApp
+        </button>
+        <p class="checkin__legal">No se cobra nada aquí. Te confirmamos la disponibilidad por WhatsApp.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
