@@ -446,7 +446,7 @@ input[type="range"] { width: 100%; accent-color: var(--acento); height: 28px; cu
 .recibo--apps { transform: rotate(-1.5deg); opacity: .82; }
 .recibo--directo { transform: rotate(1deg); margin-top: 18px; }
 .recibo h3 { font-family: var(--f-mono); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; text-align: center; font-weight: 500; }
-.recibo__sub { text-align: center; color: #6A6458; font-size: .7rem; border-bottom: 1px dashed #B8AF9F; padding-bottom: 10px; margin-bottom: 10px; }
+.recibo__sub { text-align: center; color: #524C42; /* 4.9:1 aun dentro del recibo atenuado (.82) */ font-size: .7rem; border-bottom: 1px dashed #B8AF9F; padding-bottom: 10px; margin-bottom: 10px; }
 .recibo__fila { display: flex; justify-content: space-between; gap: 8px; }
 .recibo__fila.menos { color: #2E6B4F; }
 .recibo__fila.mas { color: #AE4E26; }

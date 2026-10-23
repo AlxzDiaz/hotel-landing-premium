@@ -16,11 +16,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <!-- Tipografías sin bloquear el primer pintado (display=swap muestra texto mientras cargan) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
   <link rel="preconnect" href="https://images.unsplash.com">
 
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <!-- Los scripts del final se piden ya: así llenan la página antes del primer pintado -->
+  <link rel="preload" href="js/config.js" as="script">
+  <link rel="preload" href="js/main.js" as="script">
+  <link rel="stylesheet" href="css/iconos.css">
   <link rel="stylesheet" href="css/styles.css">
   <script>
     /* Elige día o noche antes de pintar la página (evita un parpadeo) */
@@ -43,7 +47,7 @@
     <div class="header__inner">
       <a class="logo" href="#inicio" aria-label="Inicio">
         <img src="images/logo.svg" width="40" height="40" alt="">
-        <span class="logo__nombre" data-nombre></span>
+        <span class="logo__nombre" data-nombre>Hotel <em>Aguaje</em></span>
       </a>
       <nav class="nav" id="nav" aria-label="Principal">
         <a href="#dia"><span>01</span>24 horas</a>
@@ -60,7 +64,7 @@
           <i class="ph ph-key" aria-hidden="true"></i>
           <span class="contador" id="contador" hidden>0</span>
         </button>
-        <a class="btn btn--wa btn--sm header__wa" data-wa href="#"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Reservar</span></a>
+        <a class="btn btn--wa btn--sm header__wa" data-wa href="#" aria-label="Reservar por WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Reservar</span></a>
         <button class="icono-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><i class="ph ph-list" aria-hidden="true"></i></button>
       </div>
     </div>
@@ -69,18 +73,18 @@
   <main>
     <!-- Portada: cambia según la hora -->
     <section class="hero" id="inicio">
-      <div class="hero__foto"><img id="hero-img" src="" alt="" fetchpriority="high"></div>
+      <div class="hero__foto"><img id="hero-img" src="https://images.unsplash.com/photo-1549638441-b787d2e11f14?auto=format&fit=crop&w=1800&h=1200&q=70" srcset="https://images.unsplash.com/photo-1549638441-b787d2e11f14?auto=format&fit=crop&w=640&h=427&q=70 640w, https://images.unsplash.com/photo-1549638441-b787d2e11f14?auto=format&fit=crop&w=1080&h=720&q=70 1080w, https://images.unsplash.com/photo-1549638441-b787d2e11f14?auto=format&fit=crop&w=1800&h=1200&q=70 1800w" sizes="(min-width: 1000px) 50vw, 100vw" alt="" fetchpriority="high"></div>
       <div class="hero__contenido">
-        <p class="hero__linea mono"><span id="hero-saludo"></span> · <span data-ciudad></span> · <span id="hero-hora"></span></p>
-        <h1 id="hero-titulo"></h1>
-        <p class="hero__texto" id="hero-texto"></p>
-        <div class="hero__sellos" id="hero-sellos"></div>
+        <p class="hero__linea mono"><span id="hero-saludo">Buenos días</span> · <span data-ciudad>Puerto Maldonado</span> · <span id="hero-hora"></span></p>
+        <h1 id="hero-titulo">Despierta <em>descansado</em>.</h1>
+        <p class="hero__texto" id="hero-texto">Ventanales con luz de mañana, desayuno buffet desde las 6:30 y una cama que no quieres dejar.</p>
+        <div class="hero__sellos" id="hero-sellos"><div class="sello" role="img" aria-label="4.7 de 5 en Google, 386 reseñas"><strong>4.7</strong><small>Google</small><small>386 reseñas</small></div><div class="sello" role="img" aria-label="8.9 de 10 en Booking.com, 241 reseñas"><strong>8.9</strong><small>Booking.com</small><small>241 reseñas</small></div></div>
       </div>
 
       <form class="llave-form" id="buscador" aria-label="Buscar habitación">
         <div class="llave-form__cabeza mono">
           <span><i class="ph ph-key" aria-hidden="true"></i> Tarjeta de reserva</span>
-          <span data-nombre-plano></span>
+          <span data-nombre-plano>Hotel Aguaje</span>
         </div>
         <div class="llave-form__campos">
           <label><span class="mono">Llegada</span><input type="date" id="f-llegada" required></label>
@@ -143,7 +147,7 @@
       </div>
 
       <div class="pasillo" id="pasillo" role="tablist" aria-label="Habitaciones"></div>
-      <article class="cuarto" id="cuarto" role="tabpanel" aria-live="polite"></article>
+      <div class="cuarto" id="cuarto" role="tabpanel" aria-live="polite"></div>
     </section>
 
     <!-- 03 · Carta de almohadas -->
@@ -241,9 +245,9 @@
   <footer class="footer">
     <p class="footer__grande" aria-hidden="true">Buenas noches.</p>
     <div class="footer__fila">
-      <a class="logo" href="#inicio"><img src="images/logo.svg" width="36" height="36" alt=""><span class="logo__nombre" data-nombre></span></a>
+      <a class="logo" href="#inicio"><img src="images/logo.svg" width="36" height="36" alt=""><span class="logo__nombre" data-nombre>Hotel <em>Aguaje</em></span></a>
       <div class="redes" id="redes"></div>
-      <p class="mono footer__legal">© <span id="anio"></span> <span data-nombre-plano></span> · Calificaciones, reseñas y precios de ejemplo.</p>
+      <p class="mono footer__legal">© <span id="anio"></span> <span data-nombre-plano>Hotel Aguaje</span> · Calificaciones, reseñas y precios de ejemplo.</p>
     </div>
   </footer>
 

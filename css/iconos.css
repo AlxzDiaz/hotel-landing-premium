@@ -1,0 +1,168 @@
+/* Iconos Phosphor 2.1.1 recortados a los que usa este demo.
+   Generado con herramientas/recortar-iconos.py: si agregas un icono, vuelve a generarlo. */
+
+@font-face {
+  font-family: "Phosphor";
+  src: url("../fonts/phosphor.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.ph {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ph.ph-arrow-down:before { content: "\e03e"; }
+.ph.ph-arrow-right:before { content: "\e06c"; }
+.ph.ph-arrow-up-right:before { content: "\e092"; }
+.ph.ph-baby:before { content: "\e774"; }
+.ph.ph-bed:before { content: "\e0cc"; }
+.ph.ph-bell-simple:before { content: "\e0d0"; }
+.ph.ph-buildings:before { content: "\e102"; }
+.ph.ph-car:before { content: "\e112"; }
+.ph.ph-check-circle:before { content: "\e184"; }
+.ph.ph-clock-afternoon:before { content: "\e19c"; }
+.ph.ph-cloud:before { content: "\e1aa"; }
+.ph.ph-coffee:before { content: "\e1c2"; }
+.ph.ph-coffee-bean:before { content: "\e1c0"; }
+.ph.ph-compass:before { content: "\e1c8"; }
+.ph.ph-couch:before { content: "\e7f6"; }
+.ph.ph-desk:before { content: "\ed16"; }
+.ph.ph-drop:before { content: "\e210"; }
+.ph.ph-drop-half:before { content: "\e566"; }
+.ph.ph-facebook-logo:before { content: "\e226"; }
+.ph.ph-feather:before { content: "\e9c0"; }
+.ph.ph-garage:before { content: "\ecd6"; }
+.ph.ph-info:before { content: "\e2ce"; }
+.ph.ph-instagram-logo:before { content: "\e2d0"; }
+.ph.ph-key:before { content: "\e2d6"; }
+.ph.ph-list:before { content: "\e2f0"; }
+.ph.ph-lock-key:before { content: "\e2fe"; }
+.ph.ph-minus:before { content: "\e32a"; }
+.ph.ph-moon:before { content: "\e330"; }
+.ph.ph-moon-stars:before { content: "\e58e"; }
+.ph.ph-person-simple:before { content: "\e72e"; }
+.ph.ph-plus:before { content: "\e3d4"; }
+.ph.ph-rectangle:before { content: "\e3f0"; }
+.ph.ph-shower:before { content: "\e776"; }
+.ph.ph-snowflake:before { content: "\e5aa"; }
+.ph.ph-sparkle:before { content: "\e6a2"; }
+.ph.ph-suitcase-rolling:before { content: "\e9b0"; }
+.ph.ph-sun:before { content: "\e472"; }
+.ph.ph-sun-horizon:before { content: "\e5b6"; }
+.ph.ph-television-simple:before { content: "\eae6"; }
+.ph.ph-thermometer-cold:before { content: "\e5c8"; }
+.ph.ph-tiktok-logo:before { content: "\eaf2"; }
+.ph.ph-trash:before { content: "\e4a6"; }
+.ph.ph-van:before { content: "\e826"; }
+.ph.ph-warning:before { content: "\e4e0"; }
+.ph.ph-washing-machine:before { content: "\ede8"; }
+.ph.ph-wave-sine:before { content: "\ea9a"; }
+.ph.ph-whatsapp-logo:before { content: "\e5d0"; }
+.ph.ph-wifi-high:before { content: "\e4ea"; }
+.ph.ph-x:before { content: "\e4f6"; }
+
+@font-face {
+  font-family: "Phosphor-Fill";
+  src: url("../fonts/phosphor-fill.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.ph-fill {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor-Fill" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ph-fill.ph-arrow-down:before { content: "\e03e"; }
+.ph-fill.ph-arrow-right:before { content: "\e06c"; }
+.ph-fill.ph-arrow-up-right:before { content: "\e092"; }
+.ph-fill.ph-baby:before { content: "\e774"; }
+.ph-fill.ph-bed:before { content: "\e0cc"; }
+.ph-fill.ph-bell-simple:before { content: "\e0d0"; }
+.ph-fill.ph-buildings:before { content: "\e102"; }
+.ph-fill.ph-car:before { content: "\e112"; }
+.ph-fill.ph-check-circle:before { content: "\e184"; }
+.ph-fill.ph-clock-afternoon:before { content: "\e19c"; }
+.ph-fill.ph-cloud:before { content: "\e1aa"; }
+.ph-fill.ph-coffee:before { content: "\e1c2"; }
+.ph-fill.ph-coffee-bean:before { content: "\e1c0"; }
+.ph-fill.ph-compass:before { content: "\e1c8"; }
+.ph-fill.ph-couch:before { content: "\e7f6"; }
+.ph-fill.ph-desk:before { content: "\ed16"; }
+.ph-fill.ph-drop:before { content: "\e210"; }
+.ph-fill.ph-drop-half:before { content: "\e566"; }
+.ph-fill.ph-facebook-logo:before { content: "\e226"; }
+.ph-fill.ph-feather:before { content: "\e9c0"; }
+.ph-fill.ph-garage:before { content: "\ecd6"; }
+.ph-fill.ph-info:before { content: "\e2ce"; }
+.ph-fill.ph-instagram-logo:before { content: "\e2d0"; }
+.ph-fill.ph-key:before { content: "\e2d6"; }
+.ph-fill.ph-list:before { content: "\e2f0"; }
+.ph-fill.ph-lock-key:before { content: "\e2fe"; }
+.ph-fill.ph-minus:before { content: "\e32a"; }
+.ph-fill.ph-moon:before { content: "\e330"; }
+.ph-fill.ph-moon-stars:before { content: "\e58e"; }
+.ph-fill.ph-person-simple:before { content: "\e72e"; }
+.ph-fill.ph-plus:before { content: "\e3d4"; }
+.ph-fill.ph-rectangle:before { content: "\e3f0"; }
+.ph-fill.ph-shower:before { content: "\e776"; }
+.ph-fill.ph-snowflake:before { content: "\e5aa"; }
+.ph-fill.ph-sparkle:before { content: "\e6a2"; }
+.ph-fill.ph-suitcase-rolling:before { content: "\e9b0"; }
+.ph-fill.ph-sun:before { content: "\e472"; }
+.ph-fill.ph-sun-horizon:before { content: "\e5b6"; }
+.ph-fill.ph-television-simple:before { content: "\eae6"; }
+.ph-fill.ph-thermometer-cold:before { content: "\e5c8"; }
+.ph-fill.ph-tiktok-logo:before { content: "\eaf2"; }
+.ph-fill.ph-trash:before { content: "\e4a6"; }
+.ph-fill.ph-van:before { content: "\e826"; }
+.ph-fill.ph-warning:before { content: "\e4e0"; }
+.ph-fill.ph-washing-machine:before { content: "\ede8"; }
+.ph-fill.ph-wave-sine:before { content: "\ea9a"; }
+.ph-fill.ph-whatsapp-logo:before { content: "\e5d0"; }
+.ph-fill.ph-wifi-high:before { content: "\e4ea"; }
+.ph-fill.ph-x:before { content: "\e4f6"; }

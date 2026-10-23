@@ -153,7 +153,12 @@
     const periodo = modo === modoReal ? real : modo;     // si el visitante cambió el modo, se respeta
     const p = CONFIG.portada[periodo];
     const img = $("#hero-img");
-    if (img.getAttribute("src") !== p.imagen) img.src = p.imagen;
+    if (img.getAttribute("src") !== p.imagen) {
+      // El HTML trae la foto de día con srcset; al cambiar de periodo se actualizan ambos
+      const tam = (w) => p.imagen.replace(/w=\d+&h=\d+/, `w=${w}&h=${Math.round(w * 2 / 3)}`);
+      img.srcset = `${tam(640)} 640w, ${tam(1080)} 1080w, ${tam(1800)} 1800w`;
+      img.src = p.imagen;
+    }
     $("#hero-saludo").textContent = CONFIG.portada[real].saludo;   // el saludo siempre sigue la hora real
     $("#hero-titulo").innerHTML = p.titulo;
     $("#hero-texto").textContent = p.texto;
