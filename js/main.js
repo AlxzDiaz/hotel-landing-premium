@@ -13,7 +13,7 @@
   const soles = (n) => "S/ " + n.toFixed(2);
   const solesCorto = (n) => "S/ " + (Number.isInteger(n) ? n : n.toFixed(2));
   const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
-  const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent((CONFIG.demo ? "[Demo ALXZ//] " : "") + msg)}`;
   const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const raiz = document.documentElement;
 
